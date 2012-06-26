@@ -1,0 +1,11 @@
+= MeinMap
+
+A map viewer for Minecraft.
+
+== Description
+
+This application uses the NBTFile gem and HTML5 canvas to display Minecraft maps using the source data files.
+
+== Copyright
+
+Copyright (c) 2012 Kevin W. Gisi. See MIT-LICENSE for details.
