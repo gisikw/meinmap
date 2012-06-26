@@ -86,6 +86,21 @@ get '/' do
   haml :index
 end
 
+post '/' do
+  begin
+    @pixel_map = {}
+    NBTFile.load(params['mapfile'][:tempfile].read)[1]['data']['colors'].split('').each_with_index do |pixel,i|
+      if pixel.ord > 3
+        color = COLOR_MAP[pixel.ord] || '0,0,0'
+        (@pixel_map[color.strip]||=[]) << [i % 128, i / 128]
+      end
+    end
+  rescue Exception => e
+    @error = true
+  end
+  haml :index
+end
+
 get '/style.css' do
   content_type 'text/css'
   sass :style
