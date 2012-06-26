@@ -26,8 +26,9 @@
       %article
         -if @error
           %h2 We're so sorry, but we weren't able to process that file!
-        %canvas{:width=>'512',:height=>'512'}
-        %img#canvasImg
+        -else
+          %canvas{:width=>'512',:height=>'512'}
+          %img#canvasImg
       %article
         %h2 Submit your own map_x.dat file
         %form{:method=>'post',:enctype=>'multipart/form-data'}
