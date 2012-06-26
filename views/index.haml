@@ -1,0 +1,33 @@
+!!!5
+%html
+  %head
+    %title MineMap
+    %link{:href=>"/style.css",:type=>"text/css",:rel=>"stylesheet"}
+    %link{:ref=>"shortcut icon",:href=>"favicon.ico"}
+    %script{:src =>"https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"}
+    %script
+      :erb
+        $(function(){
+          var c = $('canvas')[0].getContext('2d')
+          <% for color, pixels in @pixel_map %>
+            c.fillStyle = "rgb(<%= color %>)"
+            <% for pixel in pixels %>
+              c.fillRect(<%= pixel[0]*4 %>,<%= pixel[1]*4 %>,4,4)
+            <% end %>
+          <% end %>
+        })
+  %body
+    %section
+      %header
+        %h1 MineMap
+        %h2 A Minecraft Map Display
+      %article
+        %canvas{:width=>'512',:height=>'512'}
+      %footer
+        Copyright &copy;
+        =Date.today.year
+        &mdash;
+        %a{:href=>"http://kevingisi.com"} Kevin W. Gisi
+        | view the
+        source code
+        on GitHub soon!
