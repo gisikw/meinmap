@@ -23,6 +23,10 @@
         %h2 A Minecraft Map Display
       %article
         %canvas{:width=>'512',:height=>'512'}
+      %article
+        %ul
+          -@errors.each do |err|
+            %li=err
       %footer
         Copyright &copy;
         =Date.today.year
