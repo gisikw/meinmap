@@ -77,7 +77,6 @@ COLOR_MAP = %q{
 
 get '/' do
   @pixel_map = {}
-  @errors = []
   NBTFile.load(File.read('map_0.dat'))[1]['data']['colors'].split('').each_with_index do |pixel,i|
     if pixel.ord > 3
       color = COLOR_MAP[pixel.ord] || '0,0,0'
