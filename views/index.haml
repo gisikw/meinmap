@@ -8,13 +8,15 @@
     %script
       :erb
         $(function(){
-          var c = $('canvas')[0].getContext('2d')
+          var canvas = $('canvas')[0]
+          var c = canvas.getContext('2d')
           <% for color, pixels in @pixel_map %>
             c.fillStyle = "rgb(<%= color %>)"
             <% for pixel in pixels %>
               c.fillRect(<%= pixel[0]*4 %>,<%= pixel[1]*4 %>,4,4)
             <% end %>
           <% end %>
+          $('#canvasImg').attr('src',canvas.toDataURL())
         })
   %body
     %section
@@ -23,6 +25,7 @@
         %h2 A Minecraft Map Display
       %article
         %canvas{:width=>'512',:height=>'512'}
+        %img#canvasImg
       %footer
         Copyright &copy;
         =Date.today.year
